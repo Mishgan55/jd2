@@ -8,33 +8,22 @@ import java.util.Objects;
 
 public class User {
     private Long id;
-
     private String userName;
-
-    private String userSurname;
-
-    private Timestamp userBirth;
-
-    private Boolean isDeleted;
-
+    private String surname;
+    private Timestamp birth;
+    private boolean isDeleted;
     private Timestamp creationDate;
-
     private Timestamp modificationDate;
-
     private Double weight;
-
 
     public User() {
     }
 
-    public User(Long id, String userName, String userSurname,
-                Timestamp userBirth, Boolean isDeleted,
-                Timestamp creationDate, Timestamp modificationDate,
-                Double weight) {
+    public User(Long id, String userName, String surname, Timestamp birth, boolean isDeleted, Timestamp creationDate, Timestamp modificationDate, Double weight) {
         this.id = id;
         this.userName = userName;
-        this.userSurname = userSurname;
-        this.userBirth = userBirth;
+        this.surname = surname;
+        this.birth = birth;
         this.isDeleted = isDeleted;
         this.creationDate = creationDate;
         this.modificationDate = modificationDate;
@@ -57,31 +46,31 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public Timestamp getUserBirth(Timestamp timestamp) {
-        return userBirth;
+    public Timestamp getBirth() {
+        return birth;
     }
 
-    public void setUserBirth(Timestamp userBirth) {
-        this.userBirth = userBirth;
+    public void setBirth(Timestamp birth) {
+        this.birth = birth;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
-    public Timestamp getCreationDate(Timestamp timestamp) {
+    public Timestamp getCreationDate() {
         return creationDate;
     }
 
@@ -89,7 +78,7 @@ public class User {
         this.creationDate = creationDate;
     }
 
-    public Timestamp getModificationDate(Timestamp timestamp) {
+    public Timestamp getModificationDate() {
         return modificationDate;
     }
 
@@ -97,7 +86,7 @@ public class User {
         this.modificationDate = modificationDate;
     }
 
-    public Double getWeight(double aDouble) {
+    public Double getWeight() {
         return weight;
     }
 
@@ -109,19 +98,31 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         User user = (User) o;
-        return id == user.id && Objects.equals(userName, user.userName)
-                && Objects.equals(userSurname, user.userSurname)
-                && Objects.equals(userBirth, user.userBirth)
-                && Objects.equals(isDeleted, user.isDeleted)
-                && Objects.equals(creationDate, user.creationDate)
-                && Objects.equals(modificationDate, user.modificationDate)
-                && Objects.equals(weight, user.weight);
+
+        if (isDeleted != user.isDeleted) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (birth != null ? !birth.equals(user.birth) : user.birth != null) return false;
+        if (creationDate != null ? !creationDate.equals(user.creationDate) : user.creationDate != null) return false;
+        if (modificationDate != null ? !modificationDate.equals(user.modificationDate) : user.modificationDate != null)
+            return false;
+        return weight != null ? weight.equals(user.weight) : user.weight == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userName, userSurname, userBirth, isDeleted, creationDate, modificationDate, weight);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (birth != null ? birth.hashCode() : 0);
+        result = 31 * result + (isDeleted ? 1 : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        result = 31 * result + (modificationDate != null ? modificationDate.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -129,3 +130,7 @@ public class User {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
     }
 }
+
+
+
+
