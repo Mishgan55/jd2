@@ -275,10 +275,6 @@ public class UserRepository implements UserRepositoryInterface {
 
     }
 
-    @Override
-    public User findByName(String name, String surname) {
-        return null;
-    }
 
     @Override
     public Map<String, Double> getUserStats() {
