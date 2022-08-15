@@ -14,4 +14,6 @@ public interface UserTableColumns {
      String CHANGED="modification_date";
 
      String WEIGHT="weight";
+
+     String IS_DELETED="is_deleted";
 }

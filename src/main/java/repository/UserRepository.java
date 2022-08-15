@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static repository.UserTableColumns.ID;
+import static repository.UserTableColumns.IS_DELETED;
 import static repository.UserTableColumns.NAME;
 import static repository.UserTableColumns.SURNAME;
 import static repository.UserTableColumns.BIRTH;
@@ -71,6 +72,7 @@ public class UserRepository implements UserRepositoryInterface {
         user.setUserName(rs.getString(NAME));
         user.setSurname(rs.getString(SURNAME));
         user.setBirth(rs.getTimestamp(BIRTH));
+        user.setIsDeleted(rs.getBoolean(IS_DELETED));
         user.setCreationDate(rs.getTimestamp(CREATED));
         user.setModificationDate(rs.getTimestamp(CHANGED));
         user.setWeight(rs.getDouble(WEIGHT));
@@ -188,7 +190,7 @@ public class UserRepository implements UserRepositoryInterface {
             statement.setString(1, object.getUserName());
             statement.setString(2, object.getSurname());
             statement.setTimestamp(3, object.getBirth());
-            statement.setBoolean(4, object.isDeleted());
+            statement.setBoolean(4, object.getIsDeleted());
             statement.setTimestamp(5, object.getCreationDate());
             statement.setTimestamp(6, object.getModificationDate());
             statement.setDouble(7, object.getWeight());
@@ -231,7 +233,7 @@ public class UserRepository implements UserRepositoryInterface {
             statement.setString(1, object.getUserName());
             statement.setString(2, object.getSurname());
             statement.setTimestamp(3, object.getBirth());
-            statement.setBoolean(4, object.isDeleted());
+            statement.setBoolean(4, object.getIsDeleted());
             statement.setTimestamp(5, object.getCreationDate());
             statement.setTimestamp(6, object.getModificationDate());
             statement.setDouble(7, object.getWeight());

@@ -26,7 +26,7 @@ public class User {
 
     private Timestamp birth;
 
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     private Timestamp creationDate;
 
